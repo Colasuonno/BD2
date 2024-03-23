@@ -1,0 +1,37 @@
+Specifica Tipi di dato
+	Continente: [Africa, America, Europa, Oceania, Asia]
+	OraDestinazione: (ora: Ora, giornoCrociera: Integer > 0)
+	TipoCrociera: 
+Crociera:
+	agenzia: link_agenzia
+	codice: CodiceCrociera?
+	dataInizio: Date
+	dataFine: Date
+	nave: link_nave
+TipoCrociera:
+	nome: String
+CrocieraLunaDiMiele(TipoCrociera):
+	tipoLunaDiMiele: [Tradizionale, Alternativa]
+CrocieraFamiglie(TipoCrociera):
+	adatteAiBambini: Boolean
+Nave:
+	nome: String
+	gradoComfort: Integer 3..5
+	numeroMassimoPassegieri: Integer > 0
+Itinerario:
+	nome: String
+	destinazioni: link_destinazioni
+Destinazione:
+	numero_tappa: Integer > 0
+	nome: String
+	continente: Continente
+	arrivo: OraDestinazione
+	partenza: OraDestinazione
+	tappe: link_tappe (eventuali tappe di escursioni)
+TappaDestinazione:
+	nome: String
+	descrizione: String
+	fasciaOrariaInizio: Ora
+	fasciaOrariaFine: Ora
+
+Agenzia

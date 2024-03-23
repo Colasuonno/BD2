@@ -1,0 +1,15 @@
+SpecificaTipiDiDato
+	DaOraAOra: (da: Ora, a: Ora)
+
+
+Posto:
+	nome: String
+	descrizione: String
+	fascia_oraria: link_fo
+	
+FasciaOraria:
+	lunedi: DaOraAOra
+	martedi: DaOraAOra
+	...
+	domenica: DaOraAOra
+	

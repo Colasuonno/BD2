@@ -1,0 +1,28 @@
+Specifica classe Crociera
+
+Operazioni
+
+
+fine() : Data
+	pre: nessuna
+	post: 
+		Sia i:Itinerario tale che (this, i):croc_itin.
+
+		Sia x:DeltaDataOra il valore dell'attributo 'istante' dell'unico link di assoc. arrivo_itin in cui 'i' è coinvolto.
+
+		result = this.inizio + x.giorno "giorni".
+
+
+
+Vincoli esterni
+
+[V.Crociera.date]
+	Per ogni oggetto c:Crociera deve essere: c.inizio <= c.fine
+	
+[V.Crociera.posti_prenotati]
+	Per ogni oggetto c:Crociera:
+		- Sia CLIENTI l'insieme di oggetti cnt:Cliente tale che (c,cnt):prenotazione
+		- Sia n l'oggetto di tipo n:Nave tale che (n,c):nave
+		- Sia postiOccupati la somma di tutti i field "postiPrenotati" degli oggetti all'interno di CLIENTI
+		
+		deve essere, n.capienza >= postiOccupati
