@@ -1,0 +1,34 @@
+Officina:
+	nome: String
+	indirizzo: Indirizzo
+	dipenente: link_dip
+Persona:
+	nome: String
+	codiceFiscale: CodiceFiscale
+	indirizzo: Indirizzo
+	numeroTelefono: NumeroTelefono
+Dipendente(Impiegato):
+
+Direttore(Impiegato):
+	dataNascita: Date
+RiparazioneVeicolo:
+	codice: String {id}
+	veicolo: Veicolo(modello, tipo, targa, anno di immatricolazione e proprietario)
+	accettazione: DataOra
+	riconsegna: DataOra [0..1]
+ProprietarioVeicolo:
+	nome: String
+	codiceFiscale: CodiceFiscale
+	indirizzo: Indirizzo
+	telefono: NumeroTelefono	
+
+
+I dati di interesse per il sistema sono quelli relativi alle officine della catena, i relativi
+dipendenti e direttori, e quelli relativi alle riparazioni dei veicoli.
+Di ogni officina della catena interessano il nome, l’indirizzo, il numero di dipendenti,
+i dipendenti con il relativo numero di anni di servizio ed il direttore.
+Dei dipendenti e dei direttori interessano il nome, il codice fiscale, l’indirizzo e il
+numero di telefono; inoltre dei direttori interessa anche la data di nascita.
+Per quanto riguarda le riparazioni dei veicoli, sono dati di interesse il codice, il veicolo (modello, tipo, targa, anno di immatricolazione e proprietario), la data ed ora di
+accettazione e quella di riconsegna (per le riparazioni terminate).
+Infine, dei proprietari dei veicoli interessano nome, codice fiscale, indirizzo e telefono.

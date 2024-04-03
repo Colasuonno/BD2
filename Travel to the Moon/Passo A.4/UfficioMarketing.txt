@@ -1,0 +1,63 @@
+Specifica funzionalità
+
+//  L’Ufficio Marketing deve poter calcolare l’età media dei clienti che hanno prenotato,
+in un dato periodo, almeno una crociera che prevede una destinazione esotica
+(ovvero che si trova in un continente diverso dall’Europa).
+
+età_media(start: Date, end: Date): Float > 0
+
+pre_condizioni:
+	- start < end
+post_condizioni:
+	- no side effect
+	- sia ETA un insieme vuoto di interi positivi
+	- sia CLIENTI l'insieme di oggetti cnt:Cliente
+	- sia CROCIERE l'insieme di oggetti cr:Crociera tali che (cnt,cr):prenotazione ignorando
+	prenotazioni multiple dallo stesso cnt:Cliente
+	- sia i:Itinerario l'itinerario della crociera tale che (cr,i):itinerario dove cr è un oggetto
+	dell'insieme CROCIERE
+	- sia TAPPE l'insieme di oggetti tap:Tappa tali che (i,tap):tappa
+	- sia part:Destinazione l'oggetto tale che (i,part):partenza
+	- sia arr:Destinazione l'oggetto tale che (i, arr):arrivo
+	- sia tap_sing:Tappa e dest:Destinazione l'oggetto all'interno di TAPPE tale che (tap_sing, dest):dest_tappa
+	- sia cont_tap:Continente l'oggetto tale che (tap_sing,cont_tap):continente
+	- sia cont_arr:Continente l'oggetto tale che (arr,cont_arr):continente
+	- sia cont_part:Continente l'oggetto tale che (part,cont_part):continente
+	- Se cont_tap.nome != "Europa" OR cont_arr.nome != "Europa" OR cont_tap.nome != "Europa" allora
+	=> aggiungi cnt.eta all'insieme ETA
+
+	- result = sum(ETA)/|ETA|
+
+
+// L’Ufficio Marketing deve poter calcolare la percentuale delle destinazioni da considerarsi gettonate in un periodo dato. Una destinazione va considerata gettonata
+in un certo periodo se è stata raggiunta, in quel periodo, da almeno dieci crociere
+di luna di miele, oppure da almeno quindici crociere per famiglie.
+
+dest_gettonate(start: Date, end: Date): Integer 0..100
+
+pre_condizioni:
+	start < end
+post_condizioni:
+	- no side effect
+	- sia RESULT un intero positivo inizializzato a 0
+	- sia GETTONATE un dizionario vuoto con chiavi di tipo dt:Destinazione e valore un altro dizionario con chiavi ("luna_miele" e "famiglie") e valore di tipo Intero
+	- sia DESTINAZIONI l'insieme di oggetti dest:Destinazione tali che:
+		- sia ITINERARI l'insieme di oggetti i:Itinerario tali che (dest,i):arrivo OR (dest,i):partenza OR (Esiste tap:Tappa tale che (dest,tap):dest_tappa AND (tap,i):tappa)
+		- sia cr:Crociera un oggetto tale che (i,cr):itinerario
+		- deve essere start <= cr.dataInizio <= end
+	- sia tp:TipoCrociera un oggetto tale che (cr,tp):tipo
+	- se tp.nome == "Luna di Miele":
+		- GETTONATE[dest]["luna_miele"] += 1
+	- se tp.nome == "Crociere Per Famiglie":
+		- GETTONATE[dest]["famiglie"] += 1
+	- Alla fine dei controlli, per ogni oggetto dest:Destinazione in GETTONATE
+	- se GETTONATE[dest]["luna_miele"] >= 10 OR GETTONATE[dest]["famiglie"] >= 15:
+		- RESULT += 1
+	- result = int((RESULT/|DESTINAZIONI|)*100)
+
+
+	
+
+
+
+

@@ -1,0 +1,21 @@
+Specifica dei tipi di dato
+
+TipoDestinazione: [Romantica, Divertente]
+OraDestinazione: (ora: Ora, giornoCrociera: Integer > 0)
+DaOraAOra: (da: Ora, a: Ora)
+Indirizzo: (via: String, interno: Integer > 0, cap: Integer > 0)
+
+DeltaDataOra = (
+	giorno: Intero > 0,
+	orario: Ora	
+)
+	Operazioni del tipo di dato DeltaDataOra:
+
+		< (x:DeltaDataOra, y:DeltaDataOra) : Boolano
+			pre: nessuna
+			postcondizioni:
+				result = true se e solo se:
+					(x.giorno < y.giorno)
+					oppure
+					(x.giorno = y.giorno e x.orario < y.orario)
+
