@@ -1,0 +1,3 @@
+Specifica tipi di dato
+	MetodoDiPagamento = {Bonifico, Carta Di Credito}
+	UsuraOggetto = {ottimo, buono, discreto, da sistemare}

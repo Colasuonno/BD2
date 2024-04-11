@@ -1,0 +1,9 @@
+Operazioni
+
+get_prezzo_venduta() : Float
+    pre-condizioni:
+        nessuna
+    post-condizioni:
+        no side
+        - Sia o:OggettoDiVendita tale che (this,o):oggetto
+        - result = o.prezzo
