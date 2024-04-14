@@ -1,0 +1,33 @@
+
+F = {
+nome_itinerario/1,
+#_destinazioni_crociera/1
+}
+
+P = {crociera/1,
+nave/1,
+crociera_con_nave/2,
+itinerario/1,
+crociera_segue_itinerario/2,
+crociera_luna_miele/1,
+crociera_famiglia/1
+}
+
+D = {}
+
+1) ∀ c crociera(c) -> ∃ n nave(n) and crociera_con_nave(c,n)
+                        and
+                            not (∃ n2 != n nave(n2) and crociera_con_nave(c,n2))
+
+2) ∀ c crociera(c) -> ∃ i itinerario(i) and crociera_segue_itinerario(c,i)
+                        and
+                            not (∃ i2 != i itinerario(i2) and  crociera_segue_itinerario(c,i2))
+
+
+3) ∀ i itinerario(i) -> not ∃ i2 itinerario(i2) i != i2, nome_itinerario(i) == nome_itinerario(i2)
+
+4) ∀ c crociera(c) -> #_destinazioni_crociera(c) > 0
+
+5) ∀ c crociera(c) -> crociera_famiglia(c) OR crociera_luna_miele(c)
+
+
