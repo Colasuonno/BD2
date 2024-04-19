@@ -1,0 +1,39 @@
+
+P = {Persona/1,
+    NumeroTelefono/1,
+    Nome/1,
+    PersonaHaTelefono/2,
+    PersonaHaNome/2,
+    Dipendente/1,
+    DipendenteNonLavora/1,
+    Dipartimento/1,
+    DipendenteLavoraInDipartimento/2,
+    Direttore/2
+    }
+
+F = {}
+
+1. Tutte le persone hanno almeno un numero di telefono
+
+∀ p Persona(p) -> ∃ y NumeroTelefono(y) and PersonaHaTelefono(x,y)
+
+
+2. Ogni persona ha esattamente un nome
+
+∀ p Persona(p) -> ∃ n Nome(n) and PersonaHaNome(p,n) and
+                    not (∃ n2 Nome(n2) n2 != n and PersonaHaNome(p,n2))
+
+3. Non ci sono dipendenti che lavorano in più di due dipartimenti
+
+∀ d Dipendente(d) -> DipendenteNonLavora(d) OR (∃ dip1 Dipartimento(dip1) and DipendenteLavoraInDipartimento(d,dip1))
+                        OR (∃ dip1, dip2 Dipartimento(dip1) and Dipartimento(dip2) and DipendenteLavoraInDipartimento(d,dip1) and DipendenteLavoraInDipartimento(d,dip2))
+
+
+4. Ogni dipartimento ha esattamente un direttore che è una persona.
+
+
+∀ dip Dipartimento(dip) -> ∃ dir Persona(dir) and Direttore(dip, dir) and
+                            not (∃ dir2 Persona(dir2) and Direttore(dip, dir2) and dir2 != dir)
+
+
+
