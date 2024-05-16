@@ -1,0 +1,78 @@
+Utente:
+	nome: String
+	dataIscrizione: Date
+	cronologia: link_visualizzazione_video
+	valutazioni: link_valutazioni_video
+
+
+CommentoVideo():
+	commento: String
+	data: Date
+
+
+ValutazioniVideo():
+	video: link_video
+	valutazione: ValutazioneVideo
+
+VisualizzazioneVideo():
+	video: link_video
+	dataVisualizzazione: Date
+	commenti: link_commenti
+
+Video:
+	author: link_utente
+	titolo: String
+	dataPubblicazione: Date
+	durata: Integer > 0 (Seconds)
+	descrizione: String
+	file_name: String
+	categoria: link_categoria
+	tags: link_tags
+	
+	--- operations
+	get_visualizzazioni()
+	get_valutazione()
+
+
+
+VideoRisposta(Video):
+	risponde_a: link_video
+
+
+CategoriaVideo:
+	nome: String
+
+TagVideo:
+	nome: String
+
+
+VideoPlaylist():
+	video: link_video
+	ordine: Integer > 0
+
+
+Playlist:
+	nome: String
+	dataCreazione: Date
+	visibilità: VisibilitàPlaylist
+	videos: link_video_playlist
+
+
+
+Utente Registrato:
+	- Può pubblicare un video
+	- Può visualizzare quelli disponibili
+	- Può commentare
+		- Non può commentare un video non visto
+	- Può dare una valutazione (Massimo una volta)
+		- Non può valutare video pubblicati da lui stesso
+		- Non può mai valutare un video mai visionato
+
+
+Video Risposta:
+	- Nessun utente può rispondere ad un video pubblicato da se stesso
+
+
+Playlist:
+	- Solo le playlist pubbliche possono essere viste dagli altri utenti
+	- e, il sistema deve permettere ad ogni utente di ottenere le playlist pubbliche di un altro utente a sua scelta.

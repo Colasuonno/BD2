@@ -1,0 +1,7 @@
+Vincoli Esterni
+
+[V.Utente.bidder?]
+    - Per ogni oggetto u:Utente sia b:Bid tale che esiste il link (u,b):bidder
+    - sia pa:PostAsta tale che (b,pa):bids
+    - sia o:Utente tale che (o,pa):posts
+    - deve essere che o != u

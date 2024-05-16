@@ -1,0 +1,17 @@
+Operazioni
+
+get_proposta_prezzo(): Float
+    pre-condizioni:
+        nessuna
+    post-condizioni:
+        no-side
+        - sia pa:PostAsta tale che (this,pa):bids
+        - sia BIDS_ORDINATI l'insieme ordinato di oggetti b:Bids tali che (pa,b):bids in funzione della data rispetto all'attributo b.istante
+        - sia #pos la posizione di this all'interno di BIDS_ORDINATI + 1
+        - result = pa.prezzoIniziale + #pos*pa.rialzo
+
+
+Vincoli Esterni
+
+[V.Bid.istante]
+    Per ogni oggetto b:Bid tale che pa:PostAsta sia tale che (b,pa):bids deve essere b.istante <= pa.scadenza
