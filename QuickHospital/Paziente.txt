@@ -1,0 +1,17 @@
+[V.Paziente.possibilità_ricovero]
+
+    Per ogni p:Paziente può essere creata un'istanza di r:Ricovero tale che (p,r):ricoveri
+    se e solo se
+    - Esiste pl:PostoLetto tale che Non Esiste r:Ricovero tale che (pl,r):posto
+    OR
+    - Esiste r:Ricovero tale che (pl,r):posto AND Non esiste (pl,r2):posto con r2:Ricovero
+    tale che r2.statoRicovero = 'In Corso'
+
+
+    Formalmente....
+
+    ∀ p Paziente(p) -> (not ∃ r Ricovero(r)) OR (∃ r,pl Ricovero(r), PostoLetto(pl), ricoveri(p, r) AND posto(pl, r) AND not ∃ r2 Ricovero(r2) posto(pl, r2) AND statoRicovero(r2, 'In Corso') AND data(r2) >  )
+
+
+    Un paziente può essere ricoverato, in una certa data, solo se una precedente verifica
+    della disponibilità dei posti letto presenti nell’ospedale ha dato esito positivo.

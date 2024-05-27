@@ -1,0 +1,57 @@
+
+
+Persona():
+    nome: String
+    cognome: String
+    dataNascita: Date
+
+Paziente(Persona):
+    telefono: Telefono
+    email: Email (Unique)
+    postale: Indirizzo (Unique)
+
+PazienteEsterno(Paziente):
+    link_prestazione
+
+
+Prestazione():
+    descrizione: String
+    link_specializzazione
+    -- operations
+    cerca_medici() - Set(Medico)
+
+
+Specializzazione():
+    nome: String
+
+Medico(Persona):
+    pazienti: link_pazienti
+    link_specializzazione
+    link_specializzazione_secondarie
+    ---- operations
+    calcolo_itinerario() - Set(Stanze)
+
+
+Ricovero():
+    data: Data
+    statoRicovero: StatoRicovero
+    link_paziente
+    link_posto_letto
+
+Stanza:
+    link_posti_letto
+    piano: Integer > 0
+    settore: Integer > 0
+
+PostoLetto:
+    id: String
+
+
+[V.Stanza.posti_stanza]
+    una stanza può contenere da un minimo di 1 ad un massimo di 8 posti
+    letto
+
+
+[V.Paziente.possibilità_ricovero]
+    Un paziente può essere ricoverato, in una certa data, solo se una precedente verifica
+    della disponibilità dei posti letto presenti nell’ospedale ha dato esito positivo.
