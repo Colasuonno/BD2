@@ -1,0 +1,8 @@
+lista_spettacoli(tip: TipologiaSpettacolo, gen: String, dt: Date)
+    pre:
+        EXIST g GenereSpettacolo(g) -> nome(g, gen)
+    post:
+
+        result := {s | EXIST g, sp SpettacoloProgrammato(sp) Spettacolo(s) Genere(g) AND
+            spett(s, sp) AND nome(g, gen) AND data(sp, dt)
+        }

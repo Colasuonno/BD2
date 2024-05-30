@@ -1,0 +1,3 @@
+TipologiaSpettacolo = {Concerto, Rappresentazione Teatrale, Film}
+ModalitaPrezzo = {Ridotto, Pieno}
+CodiceFiscale = CF standard... str 16 length

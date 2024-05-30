@@ -1,0 +1,13 @@
+
+prenota(posti: Integer > 0, mp: ModalitàPrezzo, fila: Integer > 0, dt: Date, spettacolo: String)
+    pre:
+        // Troviamo lo spettacolo
+
+        - EXIST s, sp Spettacolo(s) SpettacoloProgrammato(sp) -> spett(sp, s) AND titolo(s, spettacolo) AND data(sp, dt)
+
+        // Assicuriamoci ci siano posti
+
+        posti <= sp.n_posti_liberi()
+    post:
+        ....
+        create PrenotazionePosti

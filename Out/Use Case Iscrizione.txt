@@ -1,0 +1,8 @@
+
+iscrizione(nome: String, cognome: Cognome, codiceFisc: CodiceFiscale)
+
+    pre:
+        not EXIST p Persona(P) AND cf(p, codiceFisc)
+    post:
+        - side effect
+        - INSERT (nome, cognome, codiceFisc) INTO Persona

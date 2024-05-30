@@ -1,0 +1,11 @@
+Specifica operazione n_posti
+
+
+n_posti_liberi() : Integer > 0
+
+    pre_condizioni:
+        - Nessuna
+    post_condizioni:
+        - no side effect
+        - POSTI_LIBERI := { p | EXISTS s, Posto(p), Sala(s) spett_sala(this, s) AND posto_sala(s, p) AND (not EXISTS pr PrenotazionePosti(pr) -> pr_posti(pr, p) AND spett_post(pr, this) )}
+        - result = #POSTI

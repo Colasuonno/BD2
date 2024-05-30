@@ -1,0 +1,11 @@
+Specifica operazione n_posti
+
+
+n_posti() : Integer > 0
+
+    pre_condizioni:
+        - Nessuna
+    post_condizioni:
+        - no side effect
+        - POSTI := { p | Posto(p) AND posto_sala(this, p)}
+        - result = #POSTI

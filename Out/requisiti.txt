@@ -1,0 +1,35 @@
+Out -- Requisiti
+
+
+Sede:
+    nome: String
+    indirizzo: Indirizzo
+    sale: link_sala
+    spettacoli: link_spettacoli (Con ass.class) {data: Data, inizio: Datetime, sala: link_sala}
+
+Sala:
+    tipologia: link_tipologia_sala
+    posti: link_posti
+    --
+    n_posti() : Integer > 0
+
+TipologiaSala:
+    nome: String (key) {Cinema, multisala, auditorium...}
+
+Posto:
+    fila: Integer > 0
+    colonna: Integer > 0
+
+Spettacolo:
+    titolo: String
+    tipologia: TipologiaSpettacolo
+    genere: link_genere
+    artisti: link_artisti
+
+Artista:
+    nome: String
+    cognome: String
+
+
+GenereSpettacolo:
+    nome: String (key)
